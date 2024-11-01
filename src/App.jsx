@@ -1,9 +1,15 @@
 import { useState } from 'react';
 import './App.css';
 import Modal from './components/Modal/Modal';
+import LangSwitcher from './components/LangSwitcher/LangSwitcher';
+import LoginForm from './components/LoginForm/LoginForm';
+import SearchBar from './components/SearchBar/SearchBar';
+import RadioButton from './components/RadioButton/RadioButton';
+import CheckBox from './components/CheckBox/CheckBox';
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
+  const [lang, setLang] = useState('uk');
 
   const openModal = () => {
     setIsOpen(true);
@@ -11,6 +17,10 @@ function App() {
 
   const closeModal = () => {
     setIsOpen(false);
+  };
+
+  const handleLoginForm = userData => {
+    console.log(userData);
   };
 
   return (
@@ -26,6 +36,16 @@ function App() {
           quo fuga!
         </Modal>
       )}
+
+      <h1>Please login to your account!</h1>
+      <LoginForm onLogin={handleLoginForm}>
+        <RadioButton />
+      </LoginForm>
+
+      <p>Selected language: {lang}</p>
+      <LangSwitcher value={lang} onSelect={setLang} />
+      <SearchBar />
+      <CheckBox />
     </>
   );
 }
