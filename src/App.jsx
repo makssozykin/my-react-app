@@ -1,98 +1,153 @@
-import { useState, useEffect } from 'react';
-import { fetchArticlesWithTopic } from '../src/articles-api';
-import { ThreeDots } from 'react-loader-spinner';
-import './App.css';
-import ArticleList from './components/ArticleList/ArticleList';
-// import Modal from './components/Modal/Modal';
-// import LangSwitcher from './components/LangSwitcher/LangSwitcher';
-// import LoginForm from './components/LoginForm/LoginForm';
-// import SearchBar from './components/SearchBar/SearchBar';
-// import RadioButton from './components/RadioButton/RadioButton';
-// import CheckBox from './components/CheckBox/CheckBox';
+// import { useState, useEffect, useRef } from 'react';
+// // import { fetchArticlesWithTopic } from '../src/articles-api';
+// // import { ThreeDots } from 'react-loader-spinner';
+// import './App.css';
+// import CustomButton from './components/CustomButton/CustomButton';
+// // import Player from './components/Player/Player';
+// // import ArticleList from './components/ArticleList/ArticleList';
+// // import SearchForm from './components/SearchForm/SearchForm';
+// // import Modal from './components/Modal/Modal';
+// // import LangSwitcher from './components/LangSwitcher/LangSwitcher';
+// // import LoginForm from './components/LoginForm/LoginForm';
+// // import SearchBar from './components/SearchBar/SearchBar';
+// // import RadioButton from './components/RadioButton/RadioButton';
+// // import CheckBox from './components/CheckBox/CheckBox';
 
-function App() {
-  // const [isOpen, setIsOpen] = useState(false);
-  // const [lang, setLang] = useState('uk');
+// function App() {
+//   //-----------------------------------------------------------
+//   // const [isOpen, setIsOpen] = useState(false);
+//   // const [lang, setLang] = useState('uk');
 
-  // const openModal = () => {
-  //   setIsOpen(true);
-  // };
+//   // const openModal = () => {
+//   //   setIsOpen(true);
+//   // };
 
-  // const closeModal = () => {
-  //   setIsOpen(false);
-  // };
+//   // const closeModal = () => {
+//   //   setIsOpen(false);
+//   // };
 
-  // const handleLoginForm = userData => {
-  //   console.log(userData);
-  // };
+//   // const handleLoginForm = userData => {
+//   //   console.log(userData);
+//   // };
 
-  const [articles, setArticles] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+//   //----------------------------------------------------------
+//   // const [articles, setArticles] = useState([]);
+//   // const [loading, setLoading] = useState(false);
+//   // const [error, setError] = useState(false);
 
-  useEffect(() => {
-    // 1. Оголошуємо асинхронну функцію
-    async function fetchArticles() {
-      try {
-        setLoading(true);
-        // Тут будемо виконувати HTTP-запит
-        const data = await fetchArticlesWithTopic('react');
-        setArticles(data);
-      } catch (error) {
-        setError(true);
-      } finally {
-        setLoading(false);
-      }
-    }
+//   //*-----------------------------------------------------------*/
+//   // useEffect(() => {
+//   //   // 1. Оголошуємо асинхронну функцію
+//   //   async function fetchArticles() {
+//   //     try {
+//   //       setLoading(true);
+//   //       // Тут будемо виконувати HTTP-запит
+//   //       const data = await fetchArticlesWithTopic('react');
+//   //       setArticles(data);
+//   //     } catch (error) {
+//   //       setError(true);
+//   //     } finally {
+//   //       setLoading(false);
+//   //     }
+//   //   }
 
-    // 2. Викликаємо її одразу після оголошення
-    fetchArticles();
-  }, []);
+//   //   // 2. Викликаємо її одразу після оголошення
+//   //   fetchArticles();
+//   // }, []);
 
-  return (
-    <>
-      {/* <button type="button" onClick={openModal}>
-        Modal
-      </button>
-      {isOpen && (
-        <Modal onClose={closeModal}>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum minus
-          quia a laborum, sed voluptatibus adipisci ratione obcaecati ullam
-          eaque, ipsum voluptates qui deserunt vero laboriosam aperiam? Atque,
-          quo fuga!
-        </Modal>
-      )}
+//   //*-----------------------------------------------------------*/
+//   //----------------------------------------------------------
 
-      <h1>Please login to your account!</h1>
-      <LoginForm onLogin={handleLoginForm}>
-        <RadioButton />
-      </LoginForm>
+//   // const handleSearch = async topic => {
+//   //   try {
+//   //     setArticles([]);
+//   //     setLoading(false);
+//   //     setLoading(true);
+//   //     const data = await fetchArticlesWithTopic(topic);
+//   //     setArticles(data);
+//   //   } catch (error) {
+//   //     setError(true);
+//   //   } finally {
+//   //     setLoading(false);
+//   //   }
+//   // };
+//   //----------------------------------------------------------
+//   const btnRef = useRef();
 
-      <p>Selected language: {lang}</p>
-      <LangSwitcher value={lang} onSelect={setLang} />
-      <SearchBar />
-      <CheckBox /> */}
-      <div>
-        <h1>Latest articles</h1>
-        {loading && (
-          <ThreeDots
-            visible={true}
-            height="80"
-            width="80"
-            color="#4fa94d"
-            radius="9"
-            ariaLabel="three-dots-loading"
-            wrapperStyle={{}}
-            wrapperClass=""
-          />
-        )}
-        {error && (
-          <p>Whoops, something went wrong! Please try reloading this page!</p>
-        )}
-        <ul>{articles.length > 0 && <ArticleList items={articles} />}</ul>
-      </div>
-    </>
-  );
-}
+//   useEffect(() => btnRef.current.focus(), []);
+
+//   return (
+//     <>
+//       {
+//         //----------------------------------------------------------
+//         /* <button type="button" onClick={openModal}>
+//         Modal
+//       </button>
+//       {isOpen && (
+//         <Modal onClose={closeModal}>
+//           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum minus
+//           quia a laborum, sed voluptatibus adipisci ratione obcaecati ullam
+//           eaque, ipsum voluptates qui deserunt vero laboriosam aperiam? Atque,
+//           quo fuga!
+//         </Modal>
+//       )}
+
+//       <h1>Please login to your account!</h1>
+//       <LoginForm onLogin={handleLoginForm}>
+//         <RadioButton />
+//       </LoginForm>
+
+//       <p>Selected language: {lang}</p>
+//       <LangSwitcher value={lang} onSelect={setLang} />
+//       <SearchBar />
+//       <CheckBox /> */
+//       }
+//       {
+//         //----------------------------------------------------------
+//         /* <div>
+//         <h1>Latest articles</h1>
+//         <SearchForm onSearch={handleSearch} />
+//         {loading && (
+//           <ThreeDots
+//             visible={true}
+//             height="80"
+//             width="80"
+//             color="#4fa94d"
+//             radius="9"
+//             ariaLabel="three-dots-loading"
+//             wrapperStyle={{}}
+//             wrapperClass=""
+//           />
+//         )}
+//         {error && (
+//           <p>Whoops, something went wrong! Please try reloading this page!</p>
+//         )}
+//         <ul>{articles.length > 0 && <ArticleList items={articles} />}</ul>
+//       </div> */
+//       }
+//       {
+//         //----------------------------------------------------------
+//         /* <Player source="http://media.w3.org/2010/05/sintel/trailer.mp4" /> */
+//       }
+//       <CustomButton ref={btnRef}>Button with forwarded ref</CustomButton>
+//     </>
+//   );
+// }
+
+// export default App;
+
+import { forwardRef, useRef, useEffect } from 'react';
+
+const CustomButton = forwardRef(function CustomButton(props, ref) {
+  return <button ref={ref}>{props.children}</button>;
+});
+
+const App = () => {
+  const btnRef = useRef();
+
+  useEffect(() => btnRef.current.focus(), []);
+
+  return <CustomButton ref={btnRef}>Button with forwarded ref</CustomButton>;
+};
 
 export default App;
