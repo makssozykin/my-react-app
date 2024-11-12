@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import s from './Modal.module.css';
 
-const Modal = ({ children, title = 'Default Modal', onClose }) => {
+const Modal = ({ isOpen, title = 'Default Modal', onClose }) => {
   const handleBackdropClick = event => {
     if (event.target === event.currentTarget) {
       onClose();
@@ -10,7 +10,6 @@ const Modal = ({ children, title = 'Default Modal', onClose }) => {
 
   useEffect(() => {
     const handleKeyDown = event => {
-      console.log(event.key);
       if (event.key === 'Escape') {
         onClose();
       }
@@ -41,7 +40,6 @@ const Modal = ({ children, title = 'Default Modal', onClose }) => {
         <button onClick={onClose} className={s.closeBtn}>
           ×
         </button>
-        {children}
       </div>
     </div>
   );

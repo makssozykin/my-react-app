@@ -6,7 +6,7 @@
 // // import Player from './components/Player/Player';
 // // import ArticleList from './components/ArticleList/ArticleList';
 // // import SearchForm from './components/SearchForm/SearchForm';
-// // import Modal from './components/Modal/Modal';
+import Modal from './components/Modal/Modal';
 // // import LangSwitcher from './components/LangSwitcher/LangSwitcher';
 // // import LoginForm from './components/LoginForm/LoginForm';
 // // import SearchBar from './components/SearchBar/SearchBar';
@@ -136,18 +136,28 @@
 
 // export default App;
 
-import { forwardRef, useRef, useEffect } from 'react';
+// import { forwardRef, useRef, useEffect } from 'react';
 
-const CustomButton = forwardRef(function CustomButton(props, ref) {
-  return <button ref={ref}>{props.children}</button>;
-});
+// const CustomButton = forwardRef(function CustomButton(props, ref) {
+//   return <button ref={ref}>{props.children}</button>;
+// });
+
+import { useToggle } from '../src/hooks/useToggle';
 
 const App = () => {
-  const btnRef = useRef();
+  // const btnRef = useRef();
 
-  useEffect(() => btnRef.current.focus(), []);
+  // useEffect(() => btnRef.current.focus(), []);
 
-  return <CustomButton ref={btnRef}>Button with forwarded ref</CustomButton>;
+  // return <CustomButton ref={btnRef}>Button with forwarded ref</CustomButton>;
+
+  const { isOpen, open, close } = useToggle(true);
+  return (
+    <>
+      <button onClick={open}>Open Modal</button>
+      <Modal isOpen={isOpen} onClose={close} />
+    </>
+  );
 };
 
 export default App;
